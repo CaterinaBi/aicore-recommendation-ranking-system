@@ -1,6 +1,6 @@
 # Facebook Marketplace Recommendation Ranking System (AiCore)
 
-Project that I'm working on as a part of my 'Data and AI' training at [https://www.theaicore.com/](AiCore).
+Project that I'm working on as a part of my 'Data and AI' training at [AiCore](https://www.theaicore.com/).
 
 ![A screenshot of the AiCore portal](images/portal.png)
 
