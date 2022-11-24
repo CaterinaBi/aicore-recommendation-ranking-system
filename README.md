@@ -26,3 +26,13 @@ The first and second milestones of the project consist in setting up GitHub, cre
 A nice introductory video that I encourage everyone to watch is available on the [AiCore YouTube Channel](https://youtu.be/1Z5V2VrHTTA).
 
 ## Milestone 3
+
+In milestone 3, we're required to clean both the tabular and the image datasets, which are made available to us as EC2 instances on AWS.
+
+### Tabular data cleaning
+
+The tabular dataset contains information about the listing, including its price, location, and description. We are required to create a file named `clean_tabular_data.py` within our repository, which has to be populated with code to clean the tabular dataset.
+
+Basically, the only cleaning that is required is to convert the prices into a numerical format. This was done by removing the pound sign (£) and, for some entries, the comma (,).
+
+### Image data cleaning
