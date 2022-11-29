@@ -33,6 +33,8 @@ In milestone 3, we're required to clean both the tabular and the image datasets,
 
 The tabular dataset contains information about the listing, including its price, location, and description. We are required to create a file named `clean_tabular_data.py` within our repository, which has to be populated with code to clean the tabular dataset.
 
-Basically, the only cleaning that is required is to convert the prices into a numerical format. This was done by removing the pound sign (£) and, for some entries, the comma (,).
+The dataset was in a EC2 instance on AWS, which is accessed by ssh from the local machine.
+
+Basically, the only cleaning that was required in this task was to convert the prices into a numerical format. This was done by removing the pound sign (£) and, for some entries, the comma (,).
 
 ### Image data cleaning
