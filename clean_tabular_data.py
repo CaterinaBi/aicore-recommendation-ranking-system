@@ -19,7 +19,7 @@ def clean_price_column(price_column: pd.Series) -> pd.Series:
     """A function that takes a pandas series containing prices, removes pound symbols (£) and commas, 
     then convert all values to floats.
     Args:
-        price_column (pd.Series): pandas series of price data in string format
+        price_column (pd.Series): pandas series of prices in string format
     Returns:
         pd.Series: pandas series of clean price data in float format
     """
