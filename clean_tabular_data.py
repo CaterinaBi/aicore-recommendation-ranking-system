@@ -6,13 +6,16 @@ def obtain_tabular_data(file_path: str, line_terminator: str = ',') -> pd.DataFr
         file_path (str): path from where the data is to be imported
         line_terminator (str): line terminator of the .cvs file, by default a comma (',').
     Returns:
-        ^d.DataFrame: data frame of all complete contents from the .cvs file
+        pd.DataFrame: data frame of all complete contents from the .cvs file
     '''
 
     products_df = pd.read_csv("products.csv", sep=",")
     products_df.dropna() # deletes columns where at least 1 item is missing
+    products_df.head()
 
     return products_df
+
+
 
 if __name__ == "__main__":
     file_path = "tabular_data/products.csv"
