@@ -11,7 +11,7 @@ def obtain_tabular_data(file_path: str='tabular_data/products.csv', line_termina
 
     products_df = pd.read_csv(file_path, line_terminator)
     products_df = products_df.dropna() # deletes columns where at least 1 item is missing
-    print(products_df.head())
+    # print(products_df.head()) # uncomment to see original panda frame
 
     return products_df
 
@@ -24,19 +24,15 @@ def clean_price_column(price_column: pd.Series) -> pd.Series:
         pd.Series: pandas series of clean price data in float format
     """
     products_df = obtain_tabular_data()
-    print(products_df.head())
-    
     price_column = products_df['price']
-    print(price_column)
     
+    # cleaning
     price_column = price_column.str.strip('£')
-    # print(price_column)
     price_column = price_column.replace(',','', regex=True) # commas need to go to convert price string to float
     price_column = price_column.astype('float64')
-    # print(price_column)
+    # print(price_column) # uncomment to see cleaning results
 
     return price_column
 
 if __name__ == "__main__":
-    # obtain_tabular_data()
     clean_price_column(pd.Series)
