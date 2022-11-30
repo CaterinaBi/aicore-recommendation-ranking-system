@@ -10,8 +10,9 @@ def obtain_tabular_data(file_path: str='tabular_data/products.csv', line_termina
     '''
 
     products_df = pd.read_csv(file_path, line_terminator)
-    products_df = products_df.dropna() # deletes columns where at least 1 item is missing
     # print(products_df.head()) # uncomment to see original panda frame
+    
+    products_df = products_df.dropna() # deletes columns where at least 1 item is missing
 
     return products_df
 
