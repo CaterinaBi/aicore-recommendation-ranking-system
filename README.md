@@ -52,7 +52,8 @@ price_column = price_column.replace(',','', regex=True) # commas need to go to c
 price_column = price_column.astype('float64')
 ```
 
-These include the necessary operations to convert a string column into a column of floats, i.e., deletion of the pound sign (£), deletion of commas if present, and type conversion from string to float64.
+These include the necessary operations to convert a string column into a column of floats, i.e., deletion of the pound sign (£), deletion of commas if present, and type conversion from string to float64. That the conversion has been successful can be verified by calling the .info() method on the panda frame, which prints the following:
 
+![An image containing info on the pandas data frame](images/info.png)
 
 ### Image data cleaning
