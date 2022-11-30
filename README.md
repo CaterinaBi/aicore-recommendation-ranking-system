@@ -31,10 +31,17 @@ In milestone 3, we're required to clean both the tabular and the image datasets,
 
 ### Tabular data cleaning
 
-The tabular dataset contains information about the listing, including its price, location, and description. We are required to create a file named `clean_tabular_data.py` within our repository, which has to be populated with code to clean the tabular dataset.
+The tabular dataset contains information about the listing, including its price, location, and description. We are required to create a file named `clean_tabular_data.py` within our repository, which has to be populated with code to clean the tabular dataset. The dataset was in a EC2 instance on AWS, which is accessed by ssh from the local machine.
 
-The dataset was in a EC2 instance on AWS, which is accessed by ssh from the local machine.
+As per usual, I started exploring the data using a jupyter notebook first, `clean_tabular_data.ipynb`, which is located within the `tabular_data/` directory. The pandas frame showed that the main cleaning required in this task was to convert the prices into a numerical format, as all entries were preceded by the pound sign (£), as in colomn 3 here below, and some entries included a comma (,), as illustrated by column 84.
 
-Basically, the only cleaning that was required in this task was to convert the prices into a numerical format. This was done by removing the pound sign (£) and, for some entries, the comma (,).
+![An image from the pandas data frame in which the pound sign appears in the price column](images/pound.png)
+![An image from the pandas data frame in which a comma appears in the price column](images/comma.png)
+
+Additionally, some rows contained at least one NaN, as in the image below. These rows will have to be deleted from the file as they constitute incomplete data.
+
+![An image from the pandas data frame in which at least one NaN per column appears](images/nan.png)
+
+The python file was therefore organised as follows.
 
 ### Image data cleaning
