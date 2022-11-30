@@ -42,6 +42,6 @@ Additionally, some rows contained at least one NaN, as in the image below. These
 
 ![An image from the pandas data frame in which at least one NaN per column appears](images/nan.png)
 
-The python file was therefore organised as follows.
+The python file was therefore designed to include two functions, one to open the tabular data using pandas (`obtain_tabular_data()`), and one to do the necessary cleaning (`clean_price_column()`).
 
 ### Image data cleaning
