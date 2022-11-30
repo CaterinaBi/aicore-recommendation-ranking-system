@@ -42,6 +42,17 @@ Additionally, some rows contained at least one NaN, as in the image below. These
 
 ![An image from the pandas data frame in which at least one NaN per column appears](images/nan.png)
 
-The python file was therefore designed to include two functions, one to open the tabular data using pandas (`obtain_tabular_data()`), and one to do the necessary cleaning (`clean_price_column()`).
+The python file was therefore designed to include two functions, one to open the tabular data using pandas (`obtain_tabular_data()`), and one to do the necessary cleaning (`clean_price_column()`). The former implements code to open the .cvs file containing the dataset, and utilises the `.dropna()` method to delete all rows including at least one case of missing information. Its arguments, in the number of two, are the filepath and the line separator, which is by default a comma in .csv files.
+
+The `clean_price_column()` function assigns the `['price']` column of the original pandas data frame to the `price_column` variable, and then includes the steps that follow:
+
+```python3
+price_column = price_column.str.strip('£')
+price_column = price_column.replace(',','', regex=True) # commas need to go to convert price string to float
+price_column = price_column.astype('float64')
+```
+
+These include the necessary operations to convert a string column into a column of floats, i.e., deletion of the pound sign (£), deletion of commas if present, and type conversion from string to float64.
+
 
 ### Image data cleaning
