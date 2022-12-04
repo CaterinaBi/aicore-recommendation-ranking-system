@@ -111,4 +111,4 @@ The result of the resizing can be seen in the image below. Please note both the 
 <img src="images/resizing.png" alt="An image showing the start image and resulting image after the resizing process" width="80%" height="80%"/>
 </p>
 
-> Little curiosity: My 6-year-old daughter has developed an interest in computing lately, and `resizing.png` is the first image she's ever named.
+> (Cute) fun fact: My 6-year-old daughter has developed an interest in computing lately, and `resizing.png` is the first image she's ever named.
