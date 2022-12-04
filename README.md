@@ -60,8 +60,14 @@ These include the necessary operations to convert a string column into a column 
 
 ### Image data cleaning
 
+The image dataset comprises of a total of 12668 items. These do not have the same size, nor the same number of channels. We were therefore required to write code to make sure all images were consistent along these two dimensions.
+
+The `clean_images.py`file in the repository contains the code I wrote to clean the image dataset. This implements a pipeline that applies the necessary cleaning to the image dataset by defining a function called `clean_image_data`.
+
+It should take in a filepath to the folder which contains the images, then clean them and save them into a new folder called "cleaned_images".
+
 ```python3
-def resize_image(final_size, image):
+def clean_image_data(final_size, image):
     size = image.size
     ratio = float(final_size) / max(size)
     new_image_size = tuple([int(x*ratio) for x in size])
@@ -93,6 +99,10 @@ for n, item in enumerate(dirs[:5], 1): # index has to be changed to limit/increa
     except:
         print(f'Resizing failed for {item}.')
 ```
+
+A try-except statement has been added to make sure the program does not crash if a file in the `raw_images` folder is not recognised as an image.
+
+The result of the resizing can be seen in the image below. Please note both the change in file name (from a quite complex and random one to `1_resized.png`) and in file size (from 1024x767 to 512x512). The file size has been chosen after a random exploratory analysis of the file sizes in the complete dataset.
 
 ![An image showing the start image and resulting image after the resizing process](images/resizing.png)
 
