@@ -27,6 +27,10 @@ if __name__ == '__main__':
         os.mkdir(new_path)
 
     for item in enumerate(dirs[:5], 1): # index has to be changed to limit/increase number of processed images
-        image = Image.open(path + item)
-        new_image = resize_image(final_size, image)
-        new_image.save(f'{new_path}{item}_resized.jpg')
+        try:
+            image = Image.open(path + item)
+            new_image = resize_image(final_size, image)
+            new_image.save(f'{new_path}{item}_resized.jpg')
+        except:
+            print(f'Resizing failed for {item}.')
+            continue
