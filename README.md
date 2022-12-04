@@ -2,6 +2,8 @@
 
 Project that I'm working on as a part of my 'Data and AI' training at [AiCore](https://www.theaicore.com/).
 
+> Please note that this project, like all projects completed at AiCore, is *not* tutorial-based. All the code in this repo was written by myself, following simple guidelines provided by the instructors.
+
 ![A screenshot of the AiCore portal](images/portal.png)
 
 In the Facebook Marketplace Search Ranking project, we are asked to develop and train a multimodal model that accepts images and text. The output of the model will generate embedding vectors that are helpful to make recommendations to buyers using their demographic information. 
