@@ -60,6 +60,40 @@ These include the necessary operations to convert a string column into a column 
 
 ### Image data cleaning
 
+```python3
+def resize_image(final_size, image):
+    size = image.size
+    ratio = float(final_size) / max(size)
+    new_image_size = tuple([int(x*ratio) for x in size])
+    image = image.resize(new_image_size, Image.Resampling.LANCZOS) # avoids ANTIALIAS which will be deprecated in Pillow 10
+    new_image = Image.new("RGB", (final_size, final_size))
+    new_image.paste(image, ((final_size-new_image_size[0])//2, (final_size-new_image_size[1])//2))
+```
+
+```python3
+return new_image
+```
+
+A docstring has been added to the function, as per python OOP best practices.
+
+The logic behind the file is quite straightforward, and is implemented in the `if __name__ == '__main__'` function.
+
+```python3
+new_path = "image_dataset/cleaned_images/"
+if not os.path.exists(new_path):
+    os.mkdir(new_path)
+```
+
+```python3
+for n, item in enumerate(dirs[:5], 1): # index has to be changed to limit/increase number of processed images
+    try:
+        image = Image.open(path + item)
+        new_image = resize_image(final_size, image)
+        new_image.save(f'{new_path}{n}_resized.jpg')
+    except:
+        print(f'Resizing failed for {item}.')
+```
+
 ![An image showing the start image and resulting image after the resizing process](images/resizing.png)
 
 > Little curiosity: My 6-year-old daughter has developed an interest in computing lately, and `resizing.png` is the first image she's ever named.
