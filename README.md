@@ -57,3 +57,5 @@ These include the necessary operations to convert a string column into a column 
 ![An image containing info on the pandas data frame](images/info.png)
 
 ### Image data cleaning
+
+![An image showing the start image and resulting image after the resizing process](images/resizing.png)
