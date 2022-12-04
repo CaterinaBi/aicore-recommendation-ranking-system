@@ -62,19 +62,19 @@ These include the necessary operations to convert a string column into a column 
 
 The image dataset comprises of a total of 12668 items. These do not have the same size, nor the same number of channels. We were therefore required to write code to make sure all images were consistent along these two dimensions.
 
-The `clean_images.py`file in the repository contains the code I wrote to clean the image dataset. This implements a pipeline that applies the necessary cleaning to the image dataset by defining a function called `clean_image_data`.
-
-It should take in a filepath to the folder which contains the images, then clean them and save them into a new folder called "cleaned_images".
+The `clean_images.py`file in the repository contains the code I wrote to clean the image dataset. This implements a pipeline that applies the necessary cleaning to the image dataset by defining a function called `clean_image_data`. The function takes two arguments: `final_size` (int), the size value in pixels of the resized image, and `image` (image), the image to be resized.
 
 ```python3
 def clean_image_data(final_size, image):
     size = image.size
     ratio = float(final_size) / max(size)
     new_image_size = tuple([int(x*ratio) for x in size])
-    image = image.resize(new_image_size, Image.Resampling.LANCZOS) # avoids ANTIALIAS which will be deprecated in Pillow 10
+    image = image.resize(new_image_size, Image.Resampling.LANCZOS)
     new_image = Image.new("RGB", (final_size, final_size))
     new_image.paste(image, ((final_size-new_image_size[0])//2, (final_size-new_image_size[1])//2))
 ```
+
+The ratio, assigned to the `ratio` variable is the final size of the image over the max size, converted into a float, while the `new_image_size` is a tuple created using a list comprehension that takes each x in the image `size` (calculated using the built-in `.size` method), multiplies it by the ratio. For the actual resizing, I used `Resampling.LANCZOS` instead of the suggested `ANTIALIAS` as the terminal signalled that the latter will be deprecated in Pillow 10. The function returns the resized image, which is assigned to the variable `new_image`.
 
 ```python3
 return new_image
@@ -82,7 +82,9 @@ return new_image
 
 A docstring has been added to the function, as per python OOP best practices.
 
-The logic behind the file is quite straightforward, and is implemented in the `if __name__ == '__main__'` function.
+The logic behind the file is quite straightforward, and is implemented in the `if __name__ == '__main__'` function. 
+
+It should take in a filepath to the folder which contains the images, then clean them and save them into a new folder called "cleaned_images".
 
 ```python3
 new_path = "image_dataset/cleaned_images/"
