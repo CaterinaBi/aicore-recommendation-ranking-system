@@ -108,6 +108,8 @@ A try-except statement has been added to make sure the program does not crash if
 
 The result of the resizing can be seen in the image below. Please note both the change in file name (from a quite complex and random one to `1_resized.png`) and in file size (from 1024x767 to 512x512). The file size has been chosen after a random exploratory analysis of the file sizes in the complete dataset.
 
-![An image showing the start image and resulting image after the resizing process](images/resizing.png)
+<p align="center">
+<img src="images/resizing.png" alt="An image showing the start image and resulting image after the resizing process" width="80%" height="80%"/>
+</p>
 
 > Little curiosity: My 6-year-old daughter has developed an interest in computing lately, and `resizing.png` is the first image she's ever named.
