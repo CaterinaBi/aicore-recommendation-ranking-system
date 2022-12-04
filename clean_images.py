@@ -14,7 +14,7 @@ def resize_image(final_size, image):
     size = image.size
     ratio = float(final_size) / max(size)
     new_image_size = tuple([int(x*ratio) for x in size])
-    image = image.resize(new_image_size, Image.ANTIALIAS)
+    image = image.resize(new_image_size, Image.Resampling.LANCZOS) # avoids ANTIALIAS which will be deprecated in Pillow 10
     new_image = Image.new("RGB", (final_size, final_size))
     new_image.paste(image, ((final_size-new_image_size[0])//2, (final_size-new_image_size[1])//2))
 
@@ -29,10 +29,10 @@ if __name__ == '__main__':
     if not os.path.exists(new_path):
         os.mkdir(new_path)
 
-    for item in enumerate(dirs[:5], 1): # index has to be changed to limit/increase number of processed images
+    for n, item in enumerate(dirs[:5], 1): # index has to be changed to limit/increase number of processed images
         try:
             image = Image.open(path + item)
             new_image = resize_image(final_size, image)
-            new_image.save(f'{new_path}{item}_resized.jpg')
+            new_image.save(f'{new_path}{n}_resized.jpg')
         except:
             print(f'Resizing failed for {item}.')
