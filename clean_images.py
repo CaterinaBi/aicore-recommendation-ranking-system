@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 def resize_image(final_size, image):
-    '''A function that resizes the images in the raw image dataset.
+    '''A function that resizes the images in the raw image dataset and converts them to RGB mode.
     
     Args:
         final_size (int): size value in pixels of the resized image
