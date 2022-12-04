@@ -62,7 +62,7 @@ These include the necessary operations to convert a string column into a column 
 
 ### Image data cleaning
 
-The image dataset comprises of a total of 12668 items. These do not have the same size, nor the same number of channels. We were therefore required to write code to make sure all images were consistent along these two dimensions.
+The image dataset comprises of a total of 12668 items. These do not have the same size, nor the same number of channels. We were therefore required to write code to make sure all images were consistent along these two dimensions. A small sample of 10 images has been uploaded to this repo for documentation purposes (`image_dataset/raw_dataset/`).
 
 The `clean_images.py`file in the repository contains the code I wrote to clean the image dataset. This implements a pipeline that applies the necessary cleaning to the image dataset by defining a function called `clean_image_data`. The function takes two arguments: `final_size` (int), the size value in pixels of the resized image, and `image` (image), the image to be resized.
 
@@ -82,17 +82,16 @@ The ratio, assigned to the `ratio` variable is the final size of the image over 
 return new_image
 ```
 
-A docstring has been added to the function, as per python OOP best practices.
+A docstring has been added to the function, as per python programming best practices.
 
-The logic behind the file is quite straightforward, and is implemented in the `if __name__ == '__main__'` function. 
-
-It should take in a filepath to the folder which contains the images, then clean them and save them into a new folder called "cleaned_images".
+The logic behind the file is quite straightforward, and is implemented in the `if __name__ == '__main__'` function, which stores the filepath of the raw image files in the `path` variable, to which `image_dataset/raw_dataset/` is assigned, and then declares and creates the destination folder for the resized images (`cleaned_images/`) as follows:
 
 ```python3
 new_path = "image_dataset/cleaned_images/"
 if not os.path.exists(new_path):
     os.mkdir(new_path)
 ```
+A for-loop which calls the `clean_image_data()` function is then used to clean and rename each image individually. Notice the slicing used within `enumerate(dirs)` to test the code on a subset of 5 images - this will have to be deleted when cleaning the dataset to train the ML model.
 
 ```python3
 for n, item in enumerate(dirs[:5], 1): # index has to be changed to limit/increase number of processed images
@@ -106,7 +105,7 @@ for n, item in enumerate(dirs[:5], 1): # index has to be changed to limit/increa
 
 A try-except statement has been added to make sure the program does not crash if a file in the `raw_images` folder is not recognised as an image.
 
-The result of the resizing can be seen in the image below. Please note both the change in file name (from a quite complex and random one to `1_resized.png`) and in file size (from 1024x767 to 512x512). The file size has been chosen after a random exploratory analysis of the file sizes in the complete dataset.
+The result of the resizing can be seen in the image below. Please note both the change in file name (from a quite complex and random one to `1_resized.png`) and in file size (from 1024x767 to 512x512, and 27KB to 14KB). The file size has been chosen after a random exploratory analysis of the file sizes in the complete dataset - it will probably have to be adjusted once we run this file on the totality of the raw image dataset.
 
 <p align="center">
 <img src="images/resizing.png" alt="An image showing the start image and resulting image after the resizing process" width="80%" height="80%"/>
