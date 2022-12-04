@@ -59,3 +59,5 @@ These include the necessary operations to convert a string column into a column 
 ### Image data cleaning
 
 ![An image showing the start image and resulting image after the resizing process](images/resizing.png)
+
+> Little curiosity: My 6-year-old daughter has developed an interest in computing lately, and `resizing.png` is the first image she's ever named.
